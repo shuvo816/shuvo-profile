@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHUVO'S PERSONAL PROFILE</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.15);
+  --glow:#6df2ff;
+  --text:#e8ecff;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(800px 300px at 20% -10%, rgba(109,242,255,.15), transparent),
+    radial-gradient(600px 300px at 80% 10%, rgba(124,124,255,.15), transparent),
+    var(--bg);
+  color:var(--text);
+}
+
+.container{max-width:820px;margin:auto;padding:18px}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
+.brand{font-weight:700}
+
+.lang button{
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.lang button.active{outline:2px solid var(--glow)}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+  text-align:center;
+}
+
+.photo{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  margin:0 auto 14px;
+  border:2px solid var(--border);
+  box-shadow:0 0 25px rgba(109,242,255,.35);
+  cursor:pointer;
+}
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.name{font-size:22px;font-weight:700}
+.title{margin-top:6px;color:#cfd4ff}
+.edu{margin-top:8px;font-size:14px;color:#bfc5ff;line-height:1.6}
+.bio{margin-top:16px;font-size:15px;line-height:1.7;color:#e6e9ff}
+
+.birthday, .age-box{
+  margin:16px auto 0;
+  padding:10px 16px;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  border-radius:14px;
+  background:rgba(109,242,255,0.08);
+  border:1px solid rgba(109,242,255,0.35);
+  box-shadow:0 0 18px rgba(109,242,255,0.25);
+  font-size:14px;
+  font-weight:500;
+}
+
+.age-box {
+  margin-top: 10px;
+  min-width: 250px;
+  justify-content: center;
+}
+
+.birthday span, .age-box span {
+  color: #6df2ff; /* Highlighted color for the data */
+}
+
+.social{
+  margin-top:24px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.social-box{
+  width:120px;
+  padding:15px 0;
+  border-radius:18px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(109,242,255,0.35);
+  box-shadow:0 0 18px rgba(109,242,255,0.25);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  transition:.3s;
+}
+.social-box:hover{
+  transform:translateY(-6px) scale(1.06);
+  box-shadow:0 0 35px rgba(109,242,255,0.6);
+}
+.social-box svg{
+  width:30px;
+  height:30px;
+  fill:#6df2ff;
+}
+.social-box span{
+  font-size:13px;
+  font-weight:500;
+}
+
+.footer{
+  text-align:center;
+  margin-top:18px;
+  font-size:13px;
+  color:#9aa1ff;
+}
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+}
+.lightbox.active{display:flex}
+.lightbox::after{
+  content:"X";
+  position:absolute;
+  top:20px;
+  right:25px;
+  font-size:28px;
+  cursor:pointer;
+  color:white;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="brand">Personal Profile</div>
+    <div class="lang">
+      <button id="en" class="active">English</button>
+      <button id="bn">Bangla</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="photo" id="profilePic">
+      <img src="https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg">
+    </div>
+
+    <div class="name" id="name">Mahmudur Rahman Shuvo</div>
+    <div class="title" id="title">Student | Web Developer | SSC Candidate</div>
+
+    <div class="edu" id="edu">
+      PSC Complete — Sandwip Ananda Pathshala<br>
+      Current Status: SSC Candidate
+    </div>
+
+    <div class="birthday" id="birthday">
+      <strong>Date of Birth</strong><span>10 December 2008</span>
+    </div>
+
+    <div class="age-box" id="ageBox">
+      <strong id="ageLabel">Current Age</strong><span id="ageDisplay">Calculating...</span>
+    </div>
+
+    <div class="bio" id="bio">
+      Assalamu Alaikum. I am a simple citizen of Bangladesh. Currently I am studying.
+      Whatever has happened in my life, Alhamdulillah. In the future, I wish to do many
+      good things for my country, family and common people, if Allah wills.
+      Please keep me in your prayers.
+    </div>
+
+    <div class="social">
+      <div class="social-box" onclick="openLink('fb')">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.7-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12"/></svg>
+        <span>Facebook</span>
+      </div>
+
+      <div class="social-box" onclick="openLink('email')">
+        <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7 8-5H4l8 5zm0 2-8-5v8h16V9l-8 5z"/></svg>
+        <span>Email</span>
+      </div>
+
+      <div class="social-box" onclick="openLink('wa')">
+        <svg viewBox="0 0 32 32"><path d="M16 2C8.3 2 2 8.2 2 15.8c0 2.8.8 5.5 2.4 7.8L2 30l6.6-2.2c2.2 1.2 4.6 1.8 7.1 1.8 7.7 0 14-6.2 14-13.8S23.7 2 16 2zm0 25.2c-2.3 0-4.6-.6-6.5-1.8l-.5-.3-3.9 1.3 1.3-3.8-.3-.5c-1.3-2-2-4.3-2-6.7C4.1 9.5 9.5 4.1 16 4.1S27.9 9.5 27.9 15.9 22.5 27.2 16 27.2z"/></svg>
+        <span>WhatsApp</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">© Mahmudur Rahman Shuvo</div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <img src="https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg">
+</div>
+
+<script>
+const links={
+  fb:"https://www.facebook.com/share/1BYexEmvQQ/",
+  email:"mailto:yourshuvo19@gmail.com",
+  wa:"https://wa.me/8801874063333?text=Hello%20Shuvo"
+};
+
+function openLink(k){window.open(links[k],"_blank");}
+
+const content={
+  en:{
+    name:"Mahmudur Rahman Shuvo",
+    title:"Student | Web Developer | SSC Candidate",
+    edu:"PSC Complete — Sandwip Ananda Pathshala<br>Current Status: SSC Candidate",
+    birthday:"<strong>Date of Birth</strong><span>10 December 2008</span>",
+    ageLabel:"Current Age",
+    bio:"Assalamu Alaikum. I am a simple citizen of Bangladesh. Currently I am studying. Whatever has happened in my life, Alhamdulillah. In the future, I wish to do many good things for my country, family and common people, if Allah wills. Please keep me in your prayers.",
+    y: "Years", m: "Months", d: "Days"
+  },
+  bn:{
+    name:"মাহমুদুর রহমান শুভ",
+    title:"শিক্ষার্থী | ওয়েব ডেভেলপার | এসএসসি পরীক্ষার্থী",
+    edu:"পিএসসি সম্পন্ন — সন্দ্বীপ আনন্দ পাঠশালা<br>বর্তমান অবস্থা: এসএসসি পরীক্ষার্থী",
+    birthday:"<strong>জন্ম তারিখ</strong><span>১০ ডিসেম্বর ২০০৮</span>",
+    ageLabel:"বর্তমান বয়স",
+    bio:"আসসালামু আলাইকুম। প্রথমত আমি বাংলাদেশের একজন সাধারণ নাগরিক। বর্তমানে আমি পড়াশোনা করছি। জীবনে যা কিছু হয়েছে আলহামদুলিল্লাহ। আমি ভবিষ্যতে আমার দেশ, পরিবার ও সাধারণ মানুষের জন্য অনেক কিছু করার ইচ্ছে রয়েছে যদি আল্লাহ চান। সবাই আমার জন্য দোয়া করবেন।",
+    y: "বছর", m: "মাস", d: "দিন"
+  }
+};
+
+let currentLang = "en";
+let ageInterval;
+
+function setLang(l){
+  currentLang = l;
+  document.getElementById("name").innerHTML=content[l].name;
+  document.getElementById("title").innerHTML=content[l].title;
+  document.getElementById("edu").innerHTML=content[l].edu;
+  document.getElementById("birthday").innerHTML=content[l].birthday;
+  document.getElementById("ageLabel").innerText=content[l].ageLabel;
+  document.getElementById("bio").innerHTML=content[l].bio;
+  
+  document.getElementById("en").classList.toggle("active",l==="en");
+  document.getElementById("bn").classList.toggle("active",l==="bn");
+  
+  calculateAge(); 
+}
+
+function calculateAge() {
+  const birthDate = new Date('2008-12-10T00:00:00');
+  const now = new Date();
+  
+  let years = now.getFullYear() - birthDate.getFullYear();
+  let months = now.getMonth() - birthDate.getMonth();
+  let days = now.getDate() - birthDate.getDate();
+
+  if (days < 0) {
+    months--;
+    days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+  }
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  const lang = content[currentLang];
+  document.getElementById("ageDisplay").innerText = `${years} ${lang.y}, ${months} ${lang.m}, ${days} ${lang.d}`;
+}
+
+// প্রতি ১ ঘন্টায় বয়স আপডেট হবে (যেহেতু সেকেন্ড দেখাচ্ছি না স্টাইল বজায় রাখতে)
+setInterval(calculateAge, 3600000);
+calculateAge();
+
+document.getElementById("en").onclick=()=>setLang("en");
+document.getElementById("bn").onclick=()=>setLang("bn");
+
+const lb=document.getElementById("lightbox");
+document.getElementById("profilePic").onclick=()=>lb.classList.add("active");
+lb.onclick=()=>lb.classList.remove("active");
+</script>
+
+</body>
+</html>

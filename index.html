@@ -296,10 +296,11 @@ function calculateAge() {
   }
 
   const lang = content[currentLang];
-  document.getElementById("ageDisplay").innerText = `${years} ${lang.y}, ${months} ${lang.m}, ${days} ${lang.d}`;
+  // কমা চিহ্ন বাদ দেওয়া হয়েছে
+  document.getElementById("ageDisplay").innerText = `${years} ${lang.y} ${months} ${lang.m} ${days} ${lang.d}`;
 }
 
-// প্রতি ১ ঘন্টায় বয়স আপডেট হবে (যেহেতু সেকেন্ড দেখাচ্ছি না স্টাইল বজায় রাখতে)
+// প্রতি ১ ঘন্টায় বয়স আপডেট হবে
 setInterval(calculateAge, 3600000);
 calculateAge();
 

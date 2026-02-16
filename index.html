@@ -3,7 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHUVO'S PERSONAL PROFILE</title>
+
+<title>Mahmudur Rahman Shuvo | Student & Web Developer</title>
+<meta name="title" content="Mahmudur Rahman Shuvo | Personal Profile">
+<meta name="description" content="Assalamu Alaikum, I am Mahmudur Rahman Shuvo. A student, Web Developer, and SSC Candidate from Bangladesh. Learn more about my journey and projects.">
+<meta name="keywords" content="Mahmudur Rahman Shuvo, Mahmudur Rahman, Shuvo, shuvo.iam.bd, Web Developer Bangladesh, SSC Candidate, Sandwip Ananda Pathshala">
+<meta name="author" content="Mahmudur Rahman Shuvo">
+<link rel="canonical" href="https://www.shuvo.iam.bd">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.shuvo.iam.bd/">
+<meta property="og:title" content="Mahmudur Rahman Shuvo | Student & Web Developer">
+<meta property="og:description" content="Official personal profile of Mahmudur Rahman Shuvo. Alhamdulillah for everything.">
+<meta property="og:image" content="https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mahmudur Rahman Shuvo",
+  "url": "https://www.shuvo.iam.bd",
+  "jobTitle": "Web Developer",
+  "description": "Student and Web Developer from Bangladesh, currently an SSC Candidate.",
+  "image": "https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg",
+  "sameAs": [
+    "https://www.facebook.com/share/1BYexEmvQQ/"
+  ]
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -94,7 +122,7 @@ body{
 }
 
 .birthday span, .age-box span {
-  color: #6df2ff; /* Highlighted color for the data */
+  color: #6df2ff;
 }
 
 .social{
@@ -179,10 +207,10 @@ body{
 
   <div class="card">
     <div class="photo" id="profilePic">
-      <img src="https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg">
+      <img src="https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg" alt="Mahmudur Rahman Shuvo Photo">
     </div>
 
-    <div class="name" id="name">Mahmudur Rahman Shuvo</div>
+    <h1 class="name" id="name">Mahmudur Rahman Shuvo</h1>
     <div class="title" id="title">Student | Web Developer | SSC Candidate</div>
 
     <div class="edu" id="edu">
@@ -223,11 +251,11 @@ body{
     </div>
   </div>
 
-  <div class="footer">© Mahmudur Rahman Shuvo</div>
+  <div class="footer">© Mahmudur Rahman Shuvo | www.shuvo.iam.bd</div>
 </div>
 
 <div class="lightbox" id="lightbox">
-  <img src="https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg">
+  <img src="https://i.ibb.co.com/xKdyfDcz/Picsart-26-01-04-23-26-07-848.jpg" alt="Mahmudur Rahman Shuvo Full View">
 </div>
 
 <script>
@@ -261,7 +289,12 @@ const content={
 };
 
 let currentLang = "en";
-let ageInterval;
+
+// Function to convert numbers to Bengali
+function toBengaliDigits(num) {
+  const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+  return num.toString().replace(/\d/g, (d) => bengaliDigits[d]);
+}
 
 function setLang(l){
   currentLang = l;
@@ -296,11 +329,15 @@ function calculateAge() {
   }
 
   const lang = content[currentLang];
-  // কমা চিহ্ন বাদ দেওয়া হয়েছে
-  document.getElementById("ageDisplay").innerText = `${years} ${lang.y} ${months} ${lang.m} ${days} ${lang.d}`;
+  
+  // Format based on language (Removes commas and converts to Bengali digits if needed)
+  let yDisplay = currentLang === 'bn' ? toBengaliDigits(years) : years;
+  let mDisplay = currentLang === 'bn' ? toBengaliDigits(months) : months;
+  let dDisplay = currentLang === 'bn' ? toBengaliDigits(days) : days;
+
+  document.getElementById("ageDisplay").innerText = `${yDisplay} ${lang.y} ${mDisplay} ${lang.m} ${dDisplay} ${lang.d}`;
 }
 
-// প্রতি ১ ঘন্টায় বয়স আপডেট হবে
 setInterval(calculateAge, 3600000);
 calculateAge();
 
@@ -313,4 +350,4 @@ lb.onclick=()=>lb.classList.remove("active");
 </script>
 
 </body>
-</html>
+                                                    </html>
